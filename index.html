@@ -1,0 +1,944 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YuanST Lab</title>
+    <!-- Tailwind CSS framework -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Inter font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Use Inter as the default font */
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        /* Style for the active navigation link's underline */
+        .nav-link-active {
+            position: relative;
+            color: #1d4ed8; /* blue-700 */
+            font-weight: 600;
+        }
+        .nav-link-active::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 2px;
+            bottom: -4px;
+            left: 0;
+            background-color: #1d4ed8; /* blue-700 */
+        }
+        /* Styles for the active publications tab */
+        .publication-tab-active {
+            background-color: #1d4ed8; /* blue-700 */
+            color: #ffffff;
+            border-color: #1d4ed8;
+        }
+    </style>
+</head>
+<!-- Apply flexbox to make the body a flex container that takes up the full screen height -->
+<body class="bg-gray-50 text-gray-800 flex flex-col min-h-screen">
+
+    <!-- Navigation Bar -->
+    <header class="bg-white/80 backdrop-blur-md shadow-sm sticky top-0 z-50">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <!-- Lab Name -->
+            <div class="text-xl font-bold text-gray-800">
+                <a href="#home">YuanST Lab</a>
+            </div>
+            <!-- Desktop Navigation Links -->
+            <div class="hidden md:flex items-center space-x-8">
+                <a href="#home" class="text-gray-600 hover:text-blue-600 transition duration-300">HOME</a>
+                <a href="#pi" class="text-gray-600 hover:text-blue-600 transition duration-300">PI</a>
+                <a href="#people" class="text-gray-600 hover:text-blue-600 transition duration-300">MEMBERS</a>
+                <a href="#publications" class="text-gray-600 hover:text-blue-600 transition duration-300">PUBLICATIONS</a>
+                <a href="#talks" class="text-gray-600 hover:text-blue-600 transition duration-300">TALKS</a>
+                <a href="#contact" class="text-gray-600 hover:text-blue-600 transition duration-300">JOIN US</a>
+            </div>
+            <!-- Mobile Menu Button -->
+            <div class="md:hidden">
+                <button id="menu-btn" class="text-gray-600 focus:outline-none">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+                </button>
+            </div>
+        </nav>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden">
+            <a href="#home" class="block py-2 px-6 text-sm text-gray-700 hover:bg-gray-100">HOME</a>
+            <a href="#pi" class="block py-2 px-6 text-sm text-gray-700 hover:bg-gray-100">PI</a>
+            <a href="#people" class="block py-2 px-6 text-sm text-gray-700 hover:bg-gray-100">MEMBERS</a>            
+            <a href="#publications" class="block py-2 px-6 text-sm text-gray-700 hover:bg-gray-100">PUBLICATIONS</a>
+            <a href="#talks" class="block py-2 px-6 text-sm text-gray-700 hover:bg-gray-100">TALKS</a>
+            <a href="#contact" class="block py-2 px-6 text-sm text-gray-700 hover:bg-gray-100">JOIN US</a>
+        </div>
+    </header>
+
+    <!-- Main Content: flex-grow allows this section to expand and push the footer down -->
+    <main class="container mx-auto px-6 py-12 flex-grow">
+
+        <!-- HOME Section -->
+        <section id="home" class="mb-24">
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-3/5 mb-8 md:mb-0">
+                    <h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4 leading-tight">About YuanST Lab</h1>
+                    <p class="text-xl text-gray-600 mb-6">Welcome to the YuanST (Spatial-Temporal) Lab at the Institute of Science and Technology for Brain-inspired Intelligence (ISTBI), Fudan University. We develop computational methods and spatial omics technologies to understand complex biological systems through multimodal data integration and spatiotemporal analysis. We focus on three interconnected areas: optimizing spatial omics experimental design through computational approaches, developing computational methods for integrating multimodal spatiotemporal data to represent tissue microenvironment, and mining these spatiotemporal data to extract meaningful biological insights and biomedical applications.</p>
+                </div>
+                <div class="md:w-2/5 flex justify-center">
+                    <img src="image/lab cover.png" alt="Lab Photo" class="rounded-lg shadow-xl w-full max-w-md" onerror="this.onerror=null;this.src='https://placehold.co/600x400/e2e8f0/334155?text=Image+Not+Found';">
+                </div>
+            </div>
+
+            <div class="mt-24">
+                 <h2 class="text-3xl font-bold text-center text-gray-900 mb-12">RESEARCH FOCUS</h2>
+                 <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                         <!-- RESEARCH 1 -->
+                         <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300">
+                             <h3 class="text-xl font-semibold mb-3 text-blue-700">Optimization of Spatial Omics Experimental Design</h3>
+                             <p class="text-gray-600">Our lab is dedicated to developing innovative computational approaches to optimize spatial omics experimental design. We employ advanced algorithms and mathematical models to enhance the efficiency and accuracy of spatial transcriptomics and other spatial omics technologies. By carefully considering factors such as tissue architecture, cellular heterogeneity, and technical constraints, we design optimal sampling strategies and experimental protocols. Our computational frameworks help researchers maximize the information gained from each experiment while minimizing costs and technical variations. This work is fundamental to advancing the field of spatial omics and ensuring high-quality data generation for downstream analyses.</p>
+                         </div>
+                         <!-- RESEARCH 2 -->
+                         <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300">
+                             <h3 class="text-xl font-semibold mb-3 text-blue-700">Computational Methods for Multimodal Spatiotemporal Integration</h3>
+                             <p class="text-gray-600">A core focus of our research is the development of sophisticated computational methods for integrating diverse spatiotemporal data types. We create advanced algorithms and tools to combine multiple layers of biological information, including spatial transcriptomics, proteomics, and imaging data, while preserving their spatial and temporal contexts. Our methods address the unique challenges of data alignment, normalization, and integration across different modalities and scales. We aim to construct comprehensive representations of tissue microenvironments that capture both spatial organization and temporal dynamics. These integrated approaches provide a more complete understanding of cellular interactions and tissue architecture than any single data type alone.</p>
+                         </div>
+                         <!-- RESEARCH 3 -->
+                         <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300">
+                             <h3 class="text-xl font-semibold mb-3 text-blue-700">Mining Spatiotemporal Data for Biological Insights</h3>
+                             <p class="text-gray-600">The third pillar of our research focuses on extracting meaningful biological insights and biomedical applications from integrated spatiotemporal data. We develop and apply advanced machine learning and statistical methods to analyze complex spatial patterns, cellular interactions, and temporal dynamics within tissues. Our approaches help identify key biological mechanisms, disease markers, and therapeutic targets. We particularly emphasize the translation of our findings into practical biomedical applications, such as improving disease diagnosis, understanding development and aging processes, and identifying new therapeutic strategies. This work bridges the gap between computational analysis and clinical applications, contributing to advances in precision medicine and therapeutic development.</p>
+                         </div>
+                 </div>
+            </div>
+        </section>
+
+        <!-- PI Section -->
+        <section id="pi" class="mb-24">
+            <h2 class="text-3xl font-bold text-center text-gray-900 mb-12">PRINCIPAL INVESTIGATOR</h2>
+            <div class="bg-white p-8 rounded-lg shadow-md max-w-5xl mx-auto">
+                <!-- Top section: Image on left, Name/Title/Email on right -->
+                <div class="flex flex-col md:flex-row items-center justify-center gap-8 mb-8">
+                    <div class="flex-shrink-0">
+                        <img class="w-48 h-48 mx-auto rounded-full shadow-2xl ring-4 ring-gray-200 object-cover" src="image/yuanzhiyuan.jpg" alt="Photo of Zhiyuan Yuan" onerror="this.onerror=null;this.src='https://placehold.co/192x192/e2e8f0/334155?text=PI';">
+                    </div>
+                    <div class="text-center md:text-left">
+                        <h3 class="text-2xl font-bold text-gray-900">Zhiyuan Yuan (原致远)</h3>
+                        <p class="text-lg text-gray-600">Associate Professor at Fudan University</p>
+                        <p class="text-md text-blue-600">zhiyuan@fudan.edu.cn</p>
+                    </div>
+                </div>
+
+                <!-- info -->
+                <div class="text-gray-700 space-y-4 border-t pt-8">
+                    <p><strong>Dr. Zhiyuan Yuan</strong> is a Associate Professor and Ph.D. supervisor at the Institute of Science and Technology for Brain-inspired Intelligence (ISTBI) at Fudan University, where he also serves as Deputy Director of the Center for Integrative Spatial-Omics Research. After receiving his bachelor's from Wuhan University and Ph.D. from Tsinghua University (advisor: Prof. Michael Q. Zhang), he was exceptionally recruited as an independent PI at Fudan in 2022 and was fast-tracked to his current position in 2025. His research focuses on genomic large language models and generative AI for single-cell and spatial omics. Dr. Yuan is a recipient of China's national high-level youth talent program and numerous other awards, with first or corresponding author publications in top journals such as Nature Methods, Nature Machine Intelligence, and Nature Communications. He actively leads national and municipal research grants, mentors students who also publish in high-impact journals, and serves on the youth editorial boards and committees of several professional organizations and journals.</p>
+                    <p><strong>原致远</strong>，就职于复旦大学类脑智能科学与技术研究院，长聘副教授/研究员，博士生导师，上海市浦东医院双聘研究员，空间组学整合研究中心副主任。本科毕业于武汉大学计算机学院，博士毕业于清华大学自动化系，博士毕业后被破格引进复旦大学任独立PI（2022.9），后破格晋升为长聘副教授/研究员（2025.4）。</p>
+                    <p>入选国家高层次人才特殊支持计划青年项目（2024），上海市各项人才计划（青年东方英才、晨光学者、扬帆计划、明珠菁英人才、上海35U35）及复旦大学卓学人才计划等。第一/通讯作者身份获得世界人工智能大会青年优秀论文奖（10项/年，2023）、中国生物信息学十大进展（10项/年，2022/2024）、周传纪念奖（10项/年，2023）等奖励。 </p>
+                    <p>担任腾飞书院及大数据学院本科生班导师。指导本科生一作发表于Nature Machine Intelligence；指导本科生获得“莙政”科研项目立项并优秀结题，其获复旦大学“莙政学者”奖励；指导研究生一作发表于Nature Methods、Nature Protocols、Cell Genomics、Nature Communications等期刊。</p>
+                    <p>主持国家自然科学基金面上、青年项目、上海市计算生物学重点专项、曹娥江基础创新培育项目；连续3年主持腾讯AI Lab/CCF犀牛鸟专项研究基金（2023/2024/2025），并获得年度“优秀奖”；骨干参与国家重点研发计划、上海市重点专项等重大科研任务。</p>
+                    <p>研究方向为基因组大语言模型、生成式及可解释人工智能方法，及在单细胞/空间组学中的应用。学术成果以第一或通讯作者（含共同）发表在 Nature Methods（2021/2023/2024）、 Nature Machine Intelligence（2025）、 Nature Protocols（2024）、 Cell Genomics（2024）、Nature Communications（2022/2024/2025a/2025b）等期刊。</p>
+                    <p>担任 Genom. Proteom. Bioinf.（GPB）、J. Genet. Genom.（JGG）青年编委。担任方法学（Nat. Methods/Nat. Biotechnol./Nat. Mach. Intell./Nat. Comput. Sci.），生物学（Nat. Metab., Nat. Struct. Mol. Biol., Cell Genom., Cell Syst.）及综合性（Nat. Commun., Science Advances, Natl Sci Rev, Cell Rep.）等>30种权威期刊审稿人。中国自动化学会智能健康与生物信息专委会委员、中国计算机学会生物信息专委会委员、中国生物信息学会(筹)生物信息学算法研究专委会委员、上海市生物信息学会委员。</p>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- MEMBERS Section -->
+        <section id="people" class="mb-24">
+            <h2 class="text-3xl font-bold text-center text-gray-900 mb-16">MEMBERS</h2>
+            
+            <p class="text-center text-2xl text-gray-700 mb-12">
+                We are actively looking for postdoc, graduate/undergraduate students, research assistants! Please find the information 
+                <a href="#contact" class="text-blue-600 hover:underline font-semibold">here</a>.
+            </p>
+
+            <!-- Post-doctoral Associate Section -->
+            <div class="mb-16">
+                <h3 class="text-2xl font-semibold text-gray-800 mb-8 border-b-2 border-blue-200 pb-2">Post-doctoral Associate</h3>
+                <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-x-8 gap-y-12">
+                     <div class="text-center">
+                         <img class="w-32 h-32 mx-auto rounded-full shadow-lg mb-4 object-cover" src="image/zhangdaoliang.jpg" alt="Daoliang Zhang" onerror="this.onerror=null;this.src='https://placehold.co/128x128/e2e8f0/334155?text=Member';">
+                         <h3 class="text-lg font-semibold text-gray-900">Daoliang Zhang (张道良)</h3>
+                         <p class="text-gray-500 text-sm">2025 - Now</p>
+                         <p class="text-gray-500 text-xs mt-1">Education: PhD, Shandong University</p>
+                         <p class="text-blue-600 text-xs mt-1 italic">GigaScience ‘24, Bioinformatics Advances ’25</p>
+                     </div>
+                </div>
+            </div>
+
+            <!-- Students Section -->
+            <div class="mb-16">
+                <h3 class="text-2xl font-semibold text-gray-800 mb-8 border-b-2 border-blue-200 pb-2">Students</h3>
+                <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-x-8 gap-y-12">
+                    <!-- Student -->
+                    <div class="text-center">
+                        <img class="w-32 h-32 mx-auto rounded-full shadow-lg mb-4 object-cover" src="image/zhaofangyuan.jpg" alt="Fangyuan Zhao" onerror="this.onerror=null;this.src='https://placehold.co/128x128/e2e8f0/334155?text=Member';">
+                        <h3 class="text-lg font-semibold text-gray-900">Fangyuan Zhao (赵方圆)</h3>
+                        <p class="text-gray-500 text-sm">2022 - Now</p>
+                        <p class="text-gray-500 text-xs mt-1">Joint Ph.D. Student</p>
+                        <p class="text-gray-500 text-xs mt-1">Education: PhD Candidate, Institute of Computing Technology,CAS</p>
+                        <p class="text-blue-600 text-xs mt-1 italic">Nature Methods ’24</p>
+                    </div>
+                     <!-- Student -->
+                    <div class="text-center">
+                        <img class="w-32 h-32 mx-auto rounded-full shadow-lg mb-4 object-cover" src="image/linsenlin.jpg" alt="Senlin Lin" onerror="this.onerror=null;this.src='https://placehold.co/128x128/e2e8f0/334155?text=Member';">
+                        <h3 class="text-lg font-semibold text-gray-900">Senlin Lin (林森林)</h3>
+                        <p class="text-gray-500 text-sm">2022 - Now</p>
+                        <p class="text-gray-500 text-xs mt-1">Joint Ph.D. Student</p>
+                        <p class="text-gray-500 text-xs mt-1">Education: PhD Candidate, Institute of Computing Technology,CAS</p>
+                        <p class="text-blue-600 text-xs mt-1 italic">Nature Protocols ‘24, Cell Genomics ’24, Nature Machine Intelligence ’25</p>
+                    </div>
+                    <!-- Student -->
+                    <div class="text-center">
+                        <img class="w-32 h-32 mx-auto rounded-full shadow-lg mb-4 object-cover" src="image/wangzhikang.jpg" alt="Zhikang Wang" onerror="this.onerror=null;this.src='https://placehold.co/128x128/e2e8f0/334155?text=Member';">
+                        <h3 class="text-lg font-semibold text-gray-900">Zhikang Wang (王智康)</h3>
+                        <p class="text-gray-500 text-sm">2024 - Now</p>
+                        <p class="text-gray-500 text-xs mt-1">Research Assistant</p>
+                        <p class="text-gray-500 text-xs mt-1">Education: PhD Candidate, Monash University</p>
+                        <p class="text-blue-600 text-xs mt-1 italic">Nature Machine Intelligence ’25</p>
+                    </div>
+                    <!-- Student -->
+                    <div class="text-center">
+                        <img class="w-32 h-32 mx-auto rounded-full shadow-lg mb-4 object-cover" src="image/zouqi.jpg" alt="Qi Zou" onerror="this.onerror=null;this.src='https://placehold.co/128x128/e2e8f0/334155?text=Member';">
+                        <h3 class="text-lg font-semibold text-gray-900">Qi Zou (邹麒)</h3>
+                        <p class="text-gray-500 text-sm">2024 - Now</p>
+                        <p class="text-gray-500 text-xs mt-1">Joint Ph.D. Student</p>
+                        <p class="text-gray-500 text-xs mt-1">Education: PhD Candidate, Shandong University</p>
+                    </div>
+                    <!-- Student -->
+                    <div class="text-center">
+                        <img class="w-32 h-32 mx-auto rounded-full shadow-lg mb-4 object-cover" src="image/hanchuangyi.jpg" alt="Chuangyi Han" onerror="this.onerror=null;this.src='https://placehold.co/128x128/e2e8f0/334155?text=Member';">
+                        <h3 class="text-lg font-semibold text-gray-900">Chuangyi Han (韩创意)</h3>
+                        <p class="text-gray-500 text-sm">2024 - Now</p>
+                        <p class="text-gray-500 text-xs mt-1">Undergraduate</p>
+                        <p class="text-gray-500 text-xs mt-1">Education: BSc Candidate, Fudan University</p>
+                        <p class="text-blue-600 text-xs mt-1 italic">Nature Machine Intelligence ’25</p>
+                    </div>
+                    <!-- Student -->
+                    <div class="text-center">
+                        <img class="w-32 h-32 mx-auto rounded-full shadow-lg mb-4 object-cover" src="image/kangkairan.jpg" alt="Kairan Kang" onerror="this.onerror=null;this.src='https://placehold.co/128x128/e2e8f0/334155?text=Member';">
+                        <h3 class="text-lg font-semibold text-gray-900">Kairan Kang (康恺然)</h3>
+                         <p class="text-gray-500 text-sm">2024 - Now</p>
+                        <p class="text-gray-500 text-xs mt-1">Ph.D. Student</p>
+                        <p class="text-gray-500 text-xs mt-1">Education: BSc Student, Tongji University</p>
+                    </div>
+                    <!-- Student -->
+                    <div class="text-center">
+                        <img class="w-32 h-32 mx-auto rounded-full shadow-lg mb-4 object-cover" src="image/duyixuan.jpg" alt="Yixuan Du" onerror="this.onerror=null;this.src='https://placehold.co/128x128/e2e8f0/334155?text=Member';">
+                        <h3 class="text-lg font-semibold text-gray-900">Yixuan Du (杜宜轩)</h3>
+                         <p class="text-gray-500 text-sm">2024 - Now</p>
+                        <p class="text-gray-500 text-xs mt-1">Ph.D. Student</p>
+                        <p class="text-gray-500 text-xs mt-1">Education: BSc Student, Tongji University</p>
+                    </div>
+                    <!-- Student -->
+                    <div class="text-center">
+                        <img class="w-32 h-32 mx-auto rounded-full shadow-lg mb-4 object-cover" src="image/gutianyi.jpg" alt="Tianyi Gu" onerror="this.onerror=null;this.src='https://placehold.co/128x128/e2e8f0/334155?text=Member';">
+                        <h3 class="text-lg font-semibold text-gray-900">Tianyi Gu (顾添奕)</h3>
+                        <p class="text-gray-500 text-sm">2024 - Now</p>
+                        <p class="text-gray-500 text-xs mt-1">Joint Ph.D. Student</p>
+                        <p class="text-gray-500 text-xs mt-1">Education: PhD Candidate, Fudan University</p>
+                    </div>
+                    <!-- Student -->
+                    <div class="text-center">
+                        <img class="w-32 h-32 mx-auto rounded-full shadow-lg mb-4 object-cover" src="image/yanyunzhi.jpg" alt="Yunzhi Yan" onerror="this.onerror=null;this.src='https://placehold.co/128x128/e2e8f0/334155?text=Member';">
+                        <h3 class="text-lg font-semibold text-gray-900">Yunzhi Yan (严筠芷)</h3>
+                        <p class="text-gray-500 text-sm">2024 - Now</p>
+                        <p class="text-gray-500 text-xs mt-1">Joint Ph.D. Student</p>
+                        <p class="text-gray-500 text-xs mt-1">Education: PhD Candidate, Fudan University</p>
+                    </div>
+                    <!-- Student -->
+                    <div class="text-center">
+                        <img class="w-32 h-32 mx-auto rounded-full shadow-lg mb-4 object-cover" src="image/sunchengcheng.jpg" alt="Chengcheng Sun" onerror="this.onerror=null;this.src='https://placehold.co/128x128/e2e8f0/334155?text=Member';">
+                        <h3 class="text-lg font-semibold text-gray-900">Chengcheng Sun (孙成成)</h3>
+                        <p class="text-gray-500 text-sm">2024 - Now</p>
+                        <p class="text-gray-500 text-xs mt-1">Joint Ph.D. Student</p>
+                        <p class="text-gray-500 text-xs mt-1">Education: PhD Candidate, Fudan University</p>
+                    </div>
+                    <!-- Student -->
+                    <div class="text-center">
+                        <img class="w-32 h-32 mx-auto rounded-full shadow-lg mb-4 object-cover" src="image/zhangyinghao.jpg" alt="Yinghao Zhang" onerror="this.onerror=null;this.src='https://placehold.co/128x128/e2e8f0/334155?text=Member';">
+                        <h3 class="text-lg font-semibold text-gray-900">Yinghao Zhang (张英豪)</h3>
+                        <p class="text-gray-500 text-sm">2024 - Now</p>
+                        <p class="text-gray-500 text-xs mt-1">Joint Ph.D. Student</p>
+                        <p class="text-gray-500 text-xs mt-1">Education: PhD Candidate, Fudan University</p>
+                    </div>
+
+                    <!-- Student -->
+                    <div class="text-center">
+                        <img class="w-32 h-32 mx-auto rounded-full shadow-lg mb-4 object-cover" src="image/yangxinwang.jpg" alt="Xinwang Yang" onerror="this.onerror=null;this.src='https://placehold.co/128x128/e2e8f0/334155?text=Member';">
+                        <h3 class="text-lg font-semibold text-gray-900">Xinwang Yang (杨鑫旺)</h3>
+                        <p class="text-gray-500 text-sm">2024 - Now</p>
+                        <p class="text-gray-500 text-xs mt-1">Joint Ph.D. Student</p>
+                        <p class="text-gray-500 text-xs mt-1">Education: PhD Candidate, Harbin Institute of Technology University</p>
+                    </div>
+                    <!-- Student -->
+                    <div class="text-center">
+                        <img class="w-32 h-32 mx-auto rounded-full shadow-lg mb-4 object-cover" src="image/shuhan.jpg" alt="Han Shu" onerror="this.onerror=null;this.src='https://placehold.co/128x128/e2e8f0/334155?text=Member';">
+                        <h3 class="text-lg font-semibold text-gray-900">Han Shu (舒涵)</h3>
+                        <p class="text-gray-500 text-sm">2024 - Now</p>
+                        <p class="text-gray-500 text-xs mt-1">Joint Ph.D. Student</p>
+                        <p class="text-gray-500 text-xs mt-1">Education: PhD Candidate, Northwestern Polytechnical University</p>
+                    </div>
+                    <!-- Student -->
+                    <div class="text-center">
+                        <img class="w-32 h-32 mx-auto rounded-full shadow-lg mb-4 object-cover" src="image/pantong.jpg" alt="Tong Pan" onerror="this.onerror=null;this.src='https://placehold.co/128x128/e2e8f0/334155?text=Member';">
+                        <h3 class="text-lg font-semibold text-gray-900">Tong Pan (潘彤)</h3>
+                        <p class="text-gray-500 text-sm">2025 - Now</p>
+                        <p class="text-gray-500 text-xs mt-1">Visiting Student</p>
+                        <p class="text-gray-500 text-xs mt-1">Education: PhD Candidate, Monash University</p>
+                    </div>
+                    <!-- Student -->
+                    <div class="text-center">
+                        <img class="w-32 h-32 mx-auto rounded-full shadow-lg mb-4 object-cover" src="image/lisijie.jpg" alt="Sijie Li" onerror="this.onerror=null;this.src='https://placehold.co/128x128/e2e8f0/334155?text=Member';">
+                        <h3 class="text-lg font-semibold text-gray-900">Sijie Li (李思婕)</h3>
+                         <p class="text-gray-500 text-sm">2025 - Now</p>
+                        <p class="text-gray-500 text-xs mt-1">Ph.D. Student</p>
+                        <p class="text-gray-500 text-xs mt-1">Education: PhD Candidate, Fudan University</p>
+                    </div>
+                     <!-- Student -->
+                    <div class="text-center">
+                        <img class="w-32 h-32 mx-auto rounded-full shadow-lg mb-4 object-cover" src="image/jiabei.jpg" alt="Jiabei Cheng" onerror="this.onerror=null;this.src='https://placehold.co/128x128/e2e8f0/334155?text=Member';">
+                        <h3 class="text-lg font-semibold text-gray-900">Jiabei Cheng (程佳贝)</h3>
+                        <p class="text-gray-500 text-sm">2025 - Now</p>
+                        <p class="text-gray-500 text-xs mt-1">Joint Ph.D. Student</p>
+                        <p class="text-gray-500 text-xs mt-1">Education: PhD Candidate, Shanghai Jiao Tong University</p>
+                    </div>
+                </div>
+            </div>
+
+             <!-- Alumni Section -->
+            <div>
+                <h3 class="text-2xl font-semibold text-gray-800 mb-8 border-b-2 border-blue-200 pb-2">Alumni</h3>
+                <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-x-8 gap-y-12">
+                    <div class="text-center">
+                        <img class="w-32 h-32 mx-auto rounded-full shadow-lg mb-4 object-cover" src="image/cuiyan.jpg" alt="Photo of Yan Cui" onerror="this.onerror=null;this.src='https://placehold.co/128x128/e2e8f0/334155?text=Member';">
+                        <h3 class="text-lg font-semibold text-gray-900">Yan Cui (崔岩)</h3>
+                        <p class="text-gray-500 text-sm">2023 - 2024</p>
+                        <p class="text-gray-500 text-xs mt-1">Research Assistant</p>
+                        <p class="text-blue-600 text-xs mt-1 italic">Nature Communications ’25</p>
+                        <p class="text-green-600 text-xs mt-1">Current position: PhD student, University of Pennsylvania</p>
+                    </div>
+                    <div class="text-center">
+                        <img class="w-32 h-32 mx-auto rounded-full shadow-lg mb-4 object-cover" src="image/yuna.jpg" alt="Na Yu" onerror="this.onerror=null;this.src='https://placehold.co/128x128/e2e8f0/334155?text=Member';">
+                        <h3 class="text-lg font-semibold text-gray-900">Na Yu (于娜)</h3>
+                        <p class="text-gray-500 text-sm">2024 - 2025</p>
+                        <p class="text-gray-500 text-xs mt-1">Joint Ph.D. Student</p>
+                        <p class="text-blue-600 text-xs mt-1 italic">GigaScience ‘24</p>
+                        <p class="text-green-600 text-xs mt-1">Current position: Post-doctoral Associate, Westlake University</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        
+
+        <!-- PUBLICATIONS Section -->
+        <section id="publications" class="mb-24">
+            <h2 class="text-3xl font-bold text-center text-gray-900 mb-12">PUBLICATIONS</h2>
+            <div class="bg-white p-8 rounded-lg shadow-md max-w-6xl mx-auto">
+                <!-- Tab Buttons -->
+                <div class="mb-8 flex flex-wrap justify-center border-b border-gray-200">
+                    <button data-tab="selected" class="publication-tab publication-tab-active px-4 py-2 -mb-px font-semibold text-gray-500 border-b-2 border-transparent rounded-t-lg hover:text-blue-600 focus:outline-none transition-colors duration-300">Selected</button>
+                    <button data-tab="2025" class="publication-tab px-4 py-2 font-semibold text-gray-500 border-b-2 border-transparent rounded-t-lg hover:text-blue-600 focus:outline-none transition-colors duration-300">2025</button>
+                    <button data-tab="2024" class="publication-tab px-4 py-2 font-semibold text-gray-500 border-b-2 border-transparent rounded-t-lg hover:text-blue-600 focus:outline-none transition-colors duration-300">2024</button>
+                    <button data-tab="2023" class="publication-tab px-4 py-2 font-semibold text-gray-500 border-b-2 border-transparent rounded-t-lg hover:text-blue-600 focus:outline-none transition-colors duration-300">2023</button>
+                    <button data-tab="2022" class="publication-tab px-4 py-2 font-semibold text-gray-500 border-b-2 border-transparent rounded-t-lg hover:text-blue-600 focus:outline-none transition-colors duration-300">2022</button>
+                    <button data-tab="before" class="publication-tab px-4 py-2 font-semibold text-gray-500 border-b-2 border-transparent rounded-t-lg hover:text-blue-600 focus:outline-none transition-colors duration-300">Before FuDan</button>
+                </div>
+
+                <!-- Tab Content -->
+                <div id="publication-content">
+                    <!-- Selected Publications -->
+                    <div data-content="selected" class="publication-content-item space-y-8">
+                        <div>
+                            <p class="text-gray-700 mb-3"><u>C Han*, S Lin*, Z Wang*</u>, Y Cui, Q Zou, <u>Z Yuan#</u>. "Reusability Report: Exploring the transferability of self-supervised learning models from single-cell to spatial transcriptomics". <span class="italic font-bold">Nature Machine Intelligence</span> (2025).</p>
+                            <div class="flex flex-wrap gap-2">
+                                <a href="https://www.nature.com/articles/s42256-025-01097-5" target="_blank" class="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded-full hover:bg-blue-200 transition">Paper</a>
+                                <a href="https://github.com/CSHCY/Reusability_SSL_in_SCG" target="_blank" class="text-xs bg-gray-100 text-gray-800 px-2 py-1 rounded-full hover:bg-gray-200 transition">Software</a>
+                                <a href="https://mp.weixin.qq.com/s/ep5y2i7YoFEluzLyP_lzKw" target="_blank" class="text-xs bg-green-100 text-green-800 px-2 py-1 rounded-full hover:bg-green-200 transition">Press1</a>
+                                <a href="https://mp.weixin.qq.com/s/buvpIihqjehcB4_sfgC2Lg" target="_blank" class="text-xs bg-green-100 text-green-800 px-2 py-1 rounded-full hover:bg-green-200 transition">Press2</a>
+                                <a href="https://mp.weixin.qq.com/s/onHrgJSpTGtih9RrZ-aiZA" target="_blank" class="text-xs bg-green-100 text-green-800 px-2 py-1 rounded-full hover:bg-green-200 transition">Press3</a>
+                            </div>
+                        </div>
+                        <div>
+                            <p class="text-gray-700 mb-3"><u>Y Cui*, Z Yuan#</u>. "Prioritizing perturbation-responsive gene patterns using interpretable deep learning". <span class="italic font-bold">Nature communications</span> 16 (1), 6095 (2025).</p>
+                            <div class="flex flex-wrap gap-2">
+                                <a href="https://www.nature.com/articles/s41467-025-61476-9" target="_blank" class="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded-full hover:bg-blue-200 transition">Paper</a>
+                                <a href="https://github.com/C0nc/River" target="_blank" class="text-xs bg-gray-100 text-gray-800 px-2 py-1 rounded-full hover:bg-gray-200 transition">Software</a>
+                                <a href="https://mp.weixin.qq.com/s/Mh0g7E4s7AQepZOYWBN0WQ" target="_blank" class="text-xs bg-green-100 text-green-800 px-2 py-1 rounded-full hover:bg-green-200 transition">Press1</a>
+                                <a href="https://mp.weixin.qq.com/s/jLOl7xqRzXb22YRZozO9gg" target="_blank" class="text-xs bg-green-100 text-green-800 px-2 py-1 rounded-full hover:bg-green-200 transition">Press2</a>
+                                <a href="https://mp.weixin.qq.com/s/UKXFQdjnn2hE5CVV0-zvUA" target="_blank" class="text-xs bg-green-100 text-green-800 px-2 py-1 rounded-full hover:bg-green-200 transition">Press3</a>
+                            </div>
+                        </div> <!-- This was the missing closing tag -->
+                        <div>
+                            <p class="text-gray-700 mb-3"><u>S Lin*, Y Cui, F Zhao</u>, Z Yang, J Song, J Yao, Y Zhao, BZ Qian, Y Zhao#, <u>Z Yuan#</u>. "Complete spatially resolved gene expression is not necessary for identifying spatial domains". <span class="italic font-bold">Cell Genomics</span> 4 (6) (2024).</p>
+                            <div class="flex flex-wrap gap-2">
+                                <a href="https://www.cell.com/cell-genomics/fulltext/S2666-979X(24)00131-9" target="_blank" class="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded-full hover:bg-blue-200 transition">Paper</a>
+                                <a href="https://github.com/senlin-lin/BINARY" target="_blank" class="text-xs bg-gray-100 text-gray-800 px-2 py-1 rounded-full hover:bg-gray-200 transition">Software</a>
+                                <a href="https://mp.weixin.qq.com/s/PlGBHKtBPKr0cj6qGALXKQ" target="_blank" class="text-xs bg-green-100 text-green-800 px-2 py-1 rounded-full hover:bg-green-200 transition">Press1</a>
+                                <a href="https://www.cell.com/cell-genomics/issue?pii=S2666-979X(23)X0007-X" target="_blank" class="text-xs bg-yellow-100 text-yellow-800 px-2 py-1 rounded-full hover:bg-yellow-200 transition">Featured article</a>
+                            </div>
+                        </div>
+                        <div>
+                            <p class="text-gray-700 mb-3"><u>Z Yuan*#</u>. "MENDER: Fast and scalable tissue structure identification in spatial omics data". <span class="italic font-bold">Nature Communications</span> 15, 207 (2024).</p>
+                            <div class="flex flex-wrap gap-2">
+                                <a href="https://www.nature.com/articles/s41467-023-44367-9" target="_blank" class="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded-full hover:bg-blue-200 transition">Paper</a>
+                                <a href="https://github.com/yuanzhiyuan/MENDER" target="_blank" class="text-xs bg-gray-100 text-gray-800 px-2 py-1 rounded-full hover:bg-gray-200 transition">Software</a>
+                                <a href="https://mp.weixin.qq.com/s/txD_21LjF8yHDofGcabrXg" target="_blank" class="text-xs bg-green-100 text-green-800 px-2 py-1 rounded-full hover:bg-green-200 transition">Press1</a>
+                                <a href="https://mp.weixin.qq.com/s/eBdnDigR-1Z72mdeQsmjRg" target="_blank" class="text-xs bg-green-100 text-green-800 px-2 py-1 rounded-full hover:bg-green-200 transition">Press2</a>
+                                <a href="https://mp.weixin.qq.com/s/MhmO1a4J8QOcwrU-2eA5eQ" target="_blank" class="text-xs bg-green-100 text-green-800 px-2 py-1 rounded-full hover:bg-green-200 transition">Press3</a>
+                                <a href="https://mp.weixin.qq.com/s/e_yuNlHAESuEo1tRvcSewg" target="_blank" class="text-xs bg-green-100 text-green-800 px-2 py-1 rounded-full hover:bg-green-200 transition">Press4</a>
+                                <a href="https://www.nature.com/subjects/biological-sciences/ncomms" target="_blank" class="text-xs bg-yellow-100 text-yellow-800 px-2 py-1 rounded-full hover:bg-yellow-200 transition">Featured article</a>
+                            </div>
+                        </div>
+                        <div>
+                            <p class="text-gray-700 mb-3"><u>Z Yuan*#, F Zhao*</u>, S Lin, Y Zhao, J Yao, Y Cui, XY Zhang, Y Zhao#. "Benchmarking spatial clustering methods with spatially resolved transcriptomics data". <span class="italic font-bold">Nature Methods</span> 21, 712–722 (2024).</p>
+                            <div class="flex flex-wrap gap-2">
+                                <a href="https://www.nature.com/articles/s41592-024-02215-8" target="_blank" class="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded-full hover:bg-blue-200 transition">Paper</a>
+                                <a href="https://github.com/zhaofangyuan98/SDMBench" target="_blank" class="text-xs bg-gray-100 text-gray-800 px-2 py-1 rounded-full hover:bg-gray-200 transition">Software</a>
+                                <a href="https://mp.weixin.qq.com/s/peVMZWc79xPuUe5EVtHv0g" target="_blank" class="text-xs bg-green-100 text-green-800 px-2 py-1 rounded-full hover:bg-green-200 transition">Press1</a>
+                                <a href="https://mp.weixin.qq.com/s/9da8h3LYRzGMXOJz3Q0gKA" target="_blank" class="text-xs bg-green-100 text-green-800 px-2 py-1 rounded-full hover:bg-green-200 transition">Press2</a>
+                                <a href="https://mp.weixin.qq.com/s/-WOUICUWR3PLbYPPFbQPYw" target="_blank" class="text-xs bg-green-100 text-green-800 px-2 py-1 rounded-full hover:bg-green-200 transition">Press3</a>
+                                <a href="https://mp.weixin.qq.com/s/z73Xu7tMxQyhtZte7nRFSg" target="_blank" class="text-xs bg-green-100 text-green-800 px-2 py-1 rounded-full hover:bg-green-200 transition">Press4</a>
+                                <a href="https://mp.weixin.qq.com/s/9VAUvuX64OhUYcjKj5Qlzg" target="_blank" class="text-xs bg-green-100 text-green-800 px-2 py-1 rounded-full hover:bg-green-200 transition">Press5</a>
+                                <a href="https://mp.weixin.qq.com/s/tOulSzEu78cBQ2yTUSFp2A" target="_blank" class="text-xs bg-green-100 text-green-800 px-2 py-1 rounded-full hover:bg-green-200 transition">Press6</a>
+                                <a href="https://mp.weixin.qq.com/s/lbeKEaxXNoRDjwb8Zl4flw" target="_blank" class="text-xs bg-green-100 text-green-800 px-2 py-1 rounded-full hover:bg-green-200 transition">Press7</a>
+                            </div>
+                        </div>
+                        <div>
+                            <p class="text-gray-700 mb-3"><u>S Lin*, F Zhao</u>, Z Wu, J Yao, Y Zhao# & <u>Z Yuan#</u>. "Streamlining spatial omics data analysis with Pysodb". <span class="italic font-bold">Nature Protocols</span> 19, 831–895 (2024).</p>
+                            <div class="flex flex-wrap gap-2">
+                                <a href="https://www.nature.com/articles/s41596-023-00925-5" target="_blank" class="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded-full hover:bg-blue-200 transition">Paper</a>
+                                <a href="https://github.com/TencentAILabHealthcare/pysodb" target="_blank" class="text-xs bg-gray-100 text-gray-800 px-2 py-1 rounded-full hover:bg-gray-200 transition">Software</a>
+                                <a href="https://news.fudan.edu.cn/2024/0111/c2848a139019/page.htm" target="_blank" class="text-xs bg-green-100 text-green-800 px-2 py-1 rounded-full hover:bg-green-200 transition">Press1</a>
+                                <a href="https://mp.weixin.qq.com/s/oMrIC1Ay-m6n-TOZlrkN8A" target="_blank" class="text-xs bg-green-100 text-green-800 px-2 py-1 rounded-full hover:bg-green-200 transition">Press2</a>
+                                <a href="https://mp.weixin.qq.com/s/Ew1XLqnbIaWF4Bz3M8SqCQ?poc_token=HOxYi2ijcWSEVWQFsVeh7V658meH40inKO7umJEH" target="_blank" class="text-xs bg-green-100 text-green-800 px-2 py-1 rounded-full hover:bg-green-200 transition">Press3</a>
+                            </div>
+                        </div>
+                        <div>
+                            <p class="text-gray-700 mb-3"><u>Z Yuan*#</u>, W Pan*, X Zhao, <u>F Zhao</u>, Z Xu, X Li, Y Zhao, MQ Zhang# & J Yao#. "SODB facilitates comprehensive exploration of spatial omics data". <span class="italic font-bold">Nature Methods</span> 20, 387–399 (2023).</p>
+                            <div class="flex flex-wrap gap-2">
+                                <a href="https://www.nature.com/articles/s41592-023-01773-7" target="_blank" class="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded-full hover:bg-blue-200 transition">Paper</a>
+                                <a href="https://github.com/yuanzhiyuan/SODB_analysis/" target="_blank" class="text-xs bg-gray-100 text-gray-800 px-2 py-1 rounded-full hover:bg-gray-200 transition">Software</a>
+                                <a href="https://gene.ai.tencent.com/SpatialOmics/" target="_blank" class="text-xs bg-purple-100 text-purple-800 px-2 py-1 rounded-full hover:bg-purple-200 transition">Database</a>
+                                <a href="https://www.nature.com/articles/s41592-023-01772-8" target="_blank" class="text-xs bg-green-100 text-green-800 px-2 py-1 rounded-full hover:bg-green-200 transition">Press1</a>
+                                <a href="https://www.mittrchina.com/news/detail/11752" target="_blank" class="text-xs bg-green-100 text-green-800 px-2 py-1 rounded-full hover:bg-green-200 transition">Press2</a>
+                                <a href="https://news.fudan.edu.cn/2023/0221/c2463a133933/page.htm" target="_blank" class="text-xs bg-green-100 text-green-800 px-2 py-1 rounded-full hover:bg-green-200 transition">Press3</a>
+                                <a href="https://news.fudan.edu.cn/2023/0318/c2542a134174/page.htm" target="_blank" class="text-xs bg-green-100 text-green-800 px-2 py-1 rounded-full hover:bg-green-200 transition">Press4</a>
+                                <a href="https://mp.weixin.qq.com/s/I-wfVDF6a5Knn4tUg-c9rg" target="_blank" class="text-xs bg-green-100 text-green-800 px-2 py-1 rounded-full hover:bg-green-200 transition">Press5</a>
+                                <a href="https://mp.weixin.qq.com/s/tOulSzEu78cBQ2yTUSFp2A" target="_blank" class="text-xs bg-green-100 text-green-800 px-2 py-1 rounded-full hover:bg-green-200 transition">Press6</a>
+                                <a href="https://mp.weixin.qq.com/s/QFGW-413KSCfW3q2B6Claw" target="_blank" class="text-xs bg-green-100 text-green-800 px-2 py-1 rounded-full hover:bg-green-200 transition">Press7</a>
+                                <a href="https://mp.weixin.qq.com/s/E3Pv3PxFmkia0wvQ9WfRUg" target="_blank" class="text-xs bg-green-100 text-green-800 px-2 py-1 rounded-full hover:bg-green-200 transition">Press8</a>
+                                <a href="https://mp.weixin.qq.com/s/P-_2bju6KUAWFKqs04eO-A" target="_blank" class="text-xs bg-green-100 text-green-800 px-2 py-1 rounded-full hover:bg-green-200 transition">Press9</a>
+                                <a href="https://mp.weixin.qq.com/s/N7SILyTBG8tV0jEw0FjQkw" target="_blank" class="text-xs bg-green-100 text-green-800 px-2 py-1 rounded-full hover:bg-green-200 transition">Press10</a>
+                                <a href="https://gpb.big.ac.cn/news/1020" target="_blank" class="text-xs bg-red-100 text-red-800 px-2 py-1 rounded-full hover:bg-red-200 transition">Honor1</a>
+                                <a href="https://www.nature.com/nmeth/volumes/20/issues/3" target="_blank" class="text-xs bg-yellow-100 text-yellow-800 px-2 py-1 rounded-full hover:bg-yellow-200 transition">Featured article</a>
+                            </div>
+                        </div>
+                         <div>
+                            <p class="text-gray-700 mb-3"><u>Z Yuan*#</u>, Y Li*, M Shi, F Yang, J Gao, J Yao# & MQ Zhang#. "SOTIP is a versatile method for microenvironment modeling with spatial omics data". <span class="italic font-bold">Nature Communications</span> 13, 7330 (2022).</p>
+                            <div class="flex flex-wrap gap-2">
+                                <a href="https://www.nature.com/articles/s41467-022-34867-5" target="_blank" class="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded-full hover:bg-blue-200 transition">Paper</a>
+                                <a href="https://github.com/TencentAILabHealthcare/SOTIP" target="_blank" class="text-xs bg-gray-100 text-gray-800 px-2 py-1 rounded-full hover:bg-gray-200 transition">Software</a>
+                                <a href="https://mp.weixin.qq.com/s/ZCF4V3LI62Ifzdkl5mSMvg" target="_blank" class="text-xs bg-green-100 text-green-800 px-2 py-1 rounded-full hover:bg-green-200 transition">Press1</a>
+                                <a href="https://mp.weixin.qq.com/s/jxwrPi031WppE2KeyqP45w" target="_blank" class="text-xs bg-green-100 text-green-800 px-2 py-1 rounded-full hover:bg-green-200 transition">Press2</a>
+                                <a href="https://mp.weixin.qq.com/s/wbft8_qAI7M2SzE9sb4Egw" target="_blank" class="text-xs bg-green-100 text-green-800 px-2 py-1 rounded-full hover:bg-green-200 transition">Press3</a>
+                                <a href="https://mp.weixin.qq.com/s/-DXL6a0_l0c62J1J0yU9eg" target="_blank" class="text-xs bg-green-100 text-green-800 px-2 py-1 rounded-full hover:bg-green-200 transition">Press4</a>
+                            </div>
+                        </div>  
+                         <div>
+                            <p class="text-gray-700 mb-3"><u>Z Yuan*</u>, Q Zhou*, L Cai*, L Pan, W Sun, S Qumu, S Yu, J Feng, H Zhao, Y Zheng, M Shi, S Li, Y Chen#, X Zhang# & MQ Zhang#. "SEAM is a spatial single nuclear metabolomics method for dissecting tissue microenvironment". <span class="italic font-bold">Nature Methods</span> 18, 1223–1232 (2021).</p>
+                            <div class="flex flex-wrap gap-2">
+                                <a href="https://www.nature.com/articles/s41592-021-01276-3" target="_blank" class="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded-full hover:bg-blue-200 transition">Paper</a>
+                                <a href="https://github.com/yuanzhiyuan/SEAM" target="_blank" class="text-xs bg-gray-100 text-gray-800 px-2 py-1 rounded-full hover:bg-gray-200 transition">Software</a>
+                                <a href="https://www.nature.com/articles/s41592-021-01287-0" target="_blank" class="text-xs bg-green-100 text-green-800 px-2 py-1 rounded-full hover:bg-green-200 transition">Press1</a>
+                                <a href="https://mp.weixin.qq.com/s/Ky-0lmKfkZxElMivzmd4fQ" target="_blank" class="text-xs bg-green-100 text-green-800 px-2 py-1 rounded-full hover:bg-green-200 transition">Press2</a>
+                                <a href="https://www.stemcellsciencenews.com/uncategorized/167469/" target="_blank" class="text-xs bg-green-100 text-green-800 px-2 py-1 rounded-full hover:bg-green-200 transition">Press3</a>
+                                <a href="https://mp.weixin.qq.com/s/aGrJf9ZcMaf0NCrWRmWd0A" target="_blank" class="text-xs bg-green-100 text-green-800 px-2 py-1 rounded-full hover:bg-green-200 transition">Press4</a>
+                                <a href="https://mp.weixin.qq.com/s/DSVH3pRbkM5KWdiV4o5l_w" target="_blank" class="text-xs bg-green-100 text-green-800 px-2 py-1 rounded-full hover:bg-green-200 transition">Press5</a>
+                                <a href="https://mp.weixin.qq.com/s/k1q0AdPDlD5eekNQgPKB_g" target="_blank" class="text-xs bg-green-100 text-green-800 px-2 py-1 rounded-full hover:bg-green-200 transition">Press6</a>
+                                <a href="https://mp.weixin.qq.com/s/LIYlwnd1SmfjBvq5nfIJ_g" target="_blank" class="text-xs bg-green-100 text-green-800 px-2 py-1 rounded-full hover:bg-green-200 transition">Press7</a>
+                                <a href="https://gpb.big.ac.cn/news/1016" target="_blank" class="text-xs bg-red-100 text-red-800 px-2 py-1 rounded-full hover:bg-red-200 transition">Honor1</a>
+                                <a href="https://www.sdxz2050.com/32165.html" target="_blank" class="text-xs bg-red-100 text-red-800 px-2 py-1 rounded-full hover:bg-red-200 transition">Honor2</a>
+                                <a href="https://www.nature.com/nmeth/volumes/18/issues/10" target="_blank" class="text-xs bg-yellow-100 text-yellow-800 px-2 py-1 rounded-full hover:bg-yellow-200 transition">Featured article</a>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <!-- 2025 Publications -->
+                    <div data-content="2025" class="publication-content-item space-y-8 hidden">
+                        <div>
+                            <p class="text-gray-700 mb-3"><u>C Han*, S Lin*, Z Wang*</u>, Y Cui, Q Zou, <u>Z Yuan#</u>. "Reusability Report: Exploring the transferability of self-supervised learning models from single-cell to spatial transcriptomics". <span class="italic font-bold">Nature Machine Intelligence</span> (2025).</p>
+                            <div class="flex flex-wrap gap-2">
+                                <a href="https://www.nature.com/articles/s42256-025-01097-5" target="_blank" class="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded-full hover:bg-blue-200 transition">Paper</a>
+                                <a href="https://github.com/CSHCY/Reusability_SSL_in_SCG" target="_blank" class="text-xs bg-gray-100 text-gray-800 px-2 py-1 rounded-full hover:bg-gray-200 transition">Software</a>
+                                <a href="https://mp.weixin.qq.com/s/ep5y2i7YoFEluzLyP_lzKw" target="_blank" class="text-xs bg-green-100 text-green-800 px-2 py-1 rounded-full hover:bg-green-200 transition">Press1</a>
+                                <a href="https://mp.weixin.qq.com/s/buvpIihqjehcB4_sfgC2Lg" target="_blank" class="text-xs bg-green-100 text-green-800 px-2 py-1 rounded-full hover:bg-green-200 transition">Press2</a>
+                                <a href="https://mp.weixin.qq.com/s/onHrgJSpTGtih9RrZ-aiZA" target="_blank" class="text-xs bg-green-100 text-green-800 px-2 py-1 rounded-full hover:bg-green-200 transition">Press3</a>
+                            </div>
+                        </div>
+                        <div>
+                            <p class="text-gray-700 mb-3"><u>Y Cui*, Z Yuan#</u>. "Prioritizing perturbation-responsive gene patterns using interpretable deep learning". <span class="italic font-bold">Nature communications</span> 16 (1), 6095 (2025).</p>
+                            <div class="flex flex-wrap gap-2">
+                                <a href="https://www.nature.com/articles/s41467-025-61476-9" target="_blank" class="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded-full hover:bg-blue-200 transition">Paper</a>
+                                <a href="https://github.com/C0nc/River" target="_blank" class="text-xs bg-gray-100 text-gray-800 px-2 py-1 rounded-full hover:bg-gray-200 transition">Software</a>
+                                <a href="https://mp.weixin.qq.com/s/Mh0g7E4s7AQepZOYWBN0WQ" target="_blank" class="text-xs bg-green-100 text-green-800 px-2 py-1 rounded-full hover:bg-green-200 transition">Press1</a>
+                                <a href="https://mp.weixin.qq.com/s/jLOl7xqRzXb22YRZozO9gg" target="_blank" class="text-xs bg-green-100 text-green-800 px-2 py-1 rounded-full hover:bg-green-200 transition">Press2</a>
+                                <a href="https://mp.weixin.qq.com/s/UKXFQdjnn2hE5CVV0-zvUA" target="_blank" class="text-xs bg-green-100 text-green-800 px-2 py-1 rounded-full hover:bg-green-200 transition">Press3</a>
+                            </div>
+                        </div>
+                        <div>
+                            <p class="text-gray-700 mb-3">S Fang*, M Xu*, L Cao*, X Liu*, M Bezulj*, L Tan*, <u>Z Yuan*</u>, Y Li, T Xia, L Guo, V Kovacevic, J Hui, L Guo, C Liu, M Cheng, L Lin, Z Wen, B Josic, N Milicevic, P Qiu, Q Lu, Y Li, L Wang, L Hu, C Zhang, Q Kang, F Chen, Z Deng, J Li, M Li, S Li, Y Zhao#, G Fan#, Y Zhang#, A Chen#, Y Li#, X Xu#. "Stereopy: modeling comparative and spatiotemporal cellular heterogeneity via multi-sample spatial transcriptomics". <span class="italic font-bold">Nature Communications</span> 16 (1), 3741 (2025).</p>
+                            <div class="flex flex-wrap gap-2">
+                                <a href="https://www.nature.com/articles/s41467-025-58079-9" target="_blank" class="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded-full hover:bg-blue-200 transition">Paper</a>
+                                <a href="https://github.com/STOmics/Stereopy" target="_blank" class="text-xs bg-gray-100 text-gray-800 px-2 py-1 rounded-full hover:bg-gray-200 transition">Software</a>
+                                <a href="https://mp.weixin.qq.com/s/TRM0HX7vlFH7eU13hlhOEA" target="_blank" class="text-xs bg-green-100 text-green-800 px-2 py-1 rounded-full hover:bg-green-200 transition">Press1</a>
+                                <a href="https://mp.weixin.qq.com/s/qoUbYVlHAj3alB7Sq4nh4Q" target="_blank" class="text-xs bg-green-100 text-green-800 px-2 py-1 rounded-full hover:bg-green-200 transition">Press2</a>
+                                <a href="https://mp.weixin.qq.com/s/AH6B5ON5APmqfUuG2dpECA" target="_blank" class="text-xs bg-green-100 text-green-800 px-2 py-1 rounded-full hover:bg-green-200 transition">Press3</a>
+                            </div>
+                        </div>
+                        <div>
+                            <p class="text-gray-700 mb-3">P Zhang*, C Gao*, Z Zhang, <u>Z Yuan</u>, Q Zhang, P Zhang, S Du, W Zhou, Y Li, S Li#. "Systematic inference of super-resolution cell spatial profiles from histology images". <span class="italic font-bold">Nature communications</span> 16 (1), 1838 (2025).</p>
+                             <div class="flex flex-wrap gap-2">
+                                <a href="https://www.nature.com/articles/s41467-025-57072-6" target="_blank" class="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded-full hover:bg-blue-200 transition">Paper</a>
+                                <a href="https://github.com/recolyce/HistoCell" target="_blank" class="text-xs bg-gray-100 text-gray-800 px-2 py-1 rounded-full hover:bg-gray-200 transition">Software</a>
+                            </div>
+                        </div>
+                        <div>
+                            <p class="text-gray-700 mb-3"><u>D Zhang*</u>, W Li*, X Sui*, N Yu, S Wang, Z Liu, X Wang, <u>Z Yuan#</u>, R Gao#, W Zhang#. "Space: reconciling multiple spatial domain identification algorithms via consensus clustering". <span class="italic font-bold">Bioinformatics Advances</span> 5 (1), vbaf084 (2025).</p>
+                             <div class="flex flex-wrap gap-2">
+                                <a href="https://academic.oup.com/bioinformaticsadvances/article/5/1/vbaf084/8110744" target="_blank" class="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded-full hover:bg-blue-200 transition">Paper</a>
+                                <a href="https://honchkrow.github.io/Space" target="_blank" class="text-xs bg-gray-100 text-gray-800 px-2 py-1 rounded-full hover:bg-gray-200 transition">Software</a>
+                            </div>
+                        </div>
+                        <div>
+                            <p class="text-gray-700 mb-3">X Xie*, W Liu*, <u>Z Yuan#</u>, H Chen#, W Mao#. "Bridging epigenomics and tumor immunometabolism: molecular mechanisms and therapeutic implications". <span class="italic font-bold">Molecular Cancer</span> 24 (1), 1-24 (2025).</p>
+                             <div class="flex flex-wrap gap-2">
+                                <a href="https://link.springer.com/article/10.1186/s12943-025-02269-y" target="_blank" class="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded-full hover:bg-blue-200 transition">Paper</a>
+                            </div>
+                        </div>
+                        <div>
+                            <p class="text-gray-700 mb-3">Y Zhang*, C Yang, X Chen, L Wu, <u>Z Yuan</u>, F Zhang, & BZ Qian#. "Cancer therapy resistance from a spatial-omics perspective.". <span class="italic font-bold">Clinical and Translational Medicine</span> 15(7), e70396 (2025)</p>
+                             <div class="flex flex-wrap gap-2">
+                                <a href="https://onlinelibrary.wiley.com/doi/full/10.1002/ctm2.70396" target="_blank" class="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded-full hover:bg-blue-200 transition">Paper</a>
+                            </div>
+                        </div>
+                        <div>
+                            <p class="text-gray-700 mb-3">X Sun*, W Zhang*, W Li, <u>N Yu, D Zhang, Q Zou</u>, Q Dong, X Zhang, Z Liu, <u>Z Yuan#</u>, R Gao#. "SpaGRA: graph augmentation facilitates domain identification for spatially resolved transcriptomics". <span class="italic font-bold">Journal of Genetics and Genomics</span> 52(1), 93-104 (2025).</p>
+                            <div class="flex flex-wrap gap-2">
+                                <a href="https://www.sciencedirect.com/science/article/pii/S1673852724002534" target="_blank" class="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded-full hover:bg-blue-200 transition">Paper</a>
+                                <a href="https://github.com/sunxue-yy/SpaGRA" target="_blank" class="text-xs bg-gray-100 text-gray-800 px-2 py-1 rounded-full hover:bg-gray-200 transition">Software</a>
+                                <a href="https://mp.weixin.qq.com/s/l2gW2IyyUrGoaHzE4oeQ9w" target="_blank" class="text-xs bg-green-100 text-green-800 px-2 py-1 rounded-full hover:bg-green-200 transition">Press1</a>
+                            </div>
+                        </div>                        
+                    </div>
+
+                    <!-- 2024 Publications -->
+                    <div data-content="2024" class="publication-content-item space-y-8 hidden">
+                        <div>
+                            <p class="text-gray-700 mb-3">Y Huo*, J Wang*, C Liu, J Wang, C Wang, W Guo, <u>Z Yuan</u>, T Guo, J Gu, X Li#. "CancerSRT: a spatially resolved transcriptomics database for human cancers". <span class="italic font-bold">Journal of Genetics and Genomics</span> 51(12), 1505-1508 (2024).</p>
+                            <div class="flex flex-wrap gap-2">
+                                <a href="https://www.sciencedirect.com/science/article/abs/pii/S1673852724002376" target="_blank" class="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded-full hover:bg-blue-200 transition">Paper</a>
+                                <a href="http://cancersrt.info/" target="_blank" class="text-xs bg-gray-100 text-gray-800 px-2 py-1 rounded-full hover:bg-gray-200 transition">Software</a>
+                                <a href="https://mp.weixin.qq.com/s/mEhbLu-hXIXm8CMck2GzdQ" target="_blank" class="text-xs bg-green-100 text-green-800 px-2 py-1 rounded-full hover:bg-green-200 transition">Press1</a>
+                            </div>
+                        </div>
+                        <div>
+                            <p class="text-gray-700 mb-3"><u>S Lin*, Y Cui, F Zhao</u>, Z Yang, J Song, J Yao, Y Zhao, BZ Qian, Y Zhao#, <u>Z Yuan#</u>. "Complete spatially resolved gene expression is not necessary for identifying spatial domains". <span class="italic font-bold">Cell Genomics</span> 4 (6) (2024).</p>
+                            <div class="flex flex-wrap gap-2">
+                                <a href="https://www.cell.com/cell-genomics/fulltext/S2666-979X(24)00131-9" target="_blank" class="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded-full hover:bg-blue-200 transition">Paper</a>
+                                <a href="https://github.com/senlin-lin/BINARY" target="_blank" class="text-xs bg-gray-100 text-gray-800 px-2 py-1 rounded-full hover:bg-gray-200 transition">Software</a>
+                                <a href="https://mp.weixin.qq.com/s/PlGBHKtBPKr0cj6qGALXKQ" target="_blank" class="text-xs bg-green-100 text-green-800 px-2 py-1 rounded-full hover:bg-green-200 transition">Press1</a>
+                                <a href="https://www.cell.com/cell-genomics/issue?pii=S2666-979X(23)X0007-X" target="_blank" class="text-xs bg-yellow-100 text-yellow-800 px-2 py-1 rounded-full hover:bg-yellow-200 transition">Featured article</a>
+                            </div>
+                        </div>
+                        <div>
+                            <p class="text-gray-700 mb-3"><u>S Lin*, F Zhao</u>, Z Wu, J Yao, Y Zhao# & <u>Z Yuan#</u>. "Streamlining spatial omics data analysis with Pysodb". <span class="italic font-bold">Nature Protocols</span> 19, 831–895 (2024).</p>
+                            <div class="flex flex-wrap gap-2">
+                                <a href="https://www.nature.com/articles/s41596-023-00925-5" target="_blank" class="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded-full hover:bg-blue-200 transition">Paper</a>
+                                <a href="https://github.com/TencentAILabHealthcare/pysodb" target="_blank" class="text-xs bg-gray-100 text-gray-800 px-2 py-1 rounded-full hover:bg-gray-200 transition">Software</a>
+                                <a href="https://news.fudan.edu.cn/2024/0111/c2848a139019/page.htm" target="_blank" class="text-xs bg-green-100 text-green-800 px-2 py-1 rounded-full hover:bg-green-200 transition">Press1</a>
+                                <a href="https://mp.weixin.qq.com/s/oMrIC1Ay-m6n-TOZlrkN8A" target="_blank" class="text-xs bg-green-100 text-green-800 px-2 py-1 rounded-full hover:bg-green-200 transition">Press2</a>
+                                <a href="https://mp.weixin.qq.com/s/Ew1XLqnbIaWF4Bz3M8SqCQ?poc_token=HOxYi2ijcWSEVWQFsVeh7V658meH40inKO7umJEH" target="_blank" class="text-xs bg-green-100 text-green-800 px-2 py-1 rounded-full hover:bg-green-200 transition">Press3</a>
+                            </div>
+                        </div>
+                        <div>
+                            <p class="text-gray-700 mb-3"><u>Z Yuan*#, F Zhao*</u>, S Lin, Y Zhao, J Yao, Y Cui, XY Zhang, Y Zhao#. "Benchmarking spatial clustering methods with spatially resolved transcriptomics data". <span class="italic font-bold">Nature Methods</span> 21, 712–722 (2024).</p>
+                            <div class="flex flex-wrap gap-2">
+                                <a href="https://www.nature.com/articles/s41592-024-02215-8" target="_blank" class="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded-full hover:bg-blue-200 transition">Paper</a>
+                                <a href="https://github.com/zhaofangyuan98/SDMBench" target="_blank" class="text-xs bg-gray-100 text-gray-800 px-2 py-1 rounded-full hover:bg-gray-200 transition">Software</a>
+                                <a href="https://mp.weixin.qq.com/s/peVMZWc79xPuUe5EVtHv0g" target="_blank" class="text-xs bg-green-100 text-green-800 px-2 py-1 rounded-full hover:bg-green-200 transition">Press1</a>
+                                <a href="https://mp.weixin.qq.com/s/9da8h3LYRzGMXOJz3Q0gKA" target="_blank" class="text-xs bg-green-100 text-green-800 px-2 py-1 rounded-full hover:bg-green-200 transition">Press2</a>
+                                <a href="https://mp.weixin.qq.com/s/-WOUICUWR3PLbYPPFbQPYw" target="_blank" class="text-xs bg-green-100 text-green-800 px-2 py-1 rounded-full hover:bg-green-200 transition">Press3</a>
+                                <a href="https://mp.weixin.qq.com/s/z73Xu7tMxQyhtZte7nRFSg" target="_blank" class="text-xs bg-green-100 text-green-800 px-2 py-1 rounded-full hover:bg-green-200 transition">Press4</a>
+                                <a href="https://mp.weixin.qq.com/s/9VAUvuX64OhUYcjKj5Qlzg" target="_blank" class="text-xs bg-green-100 text-green-800 px-2 py-1 rounded-full hover:bg-green-200 transition">Press5</a>
+                                <a href="https://mp.weixin.qq.com/s/tOulSzEu78cBQ2yTUSFp2A" target="_blank" class="text-xs bg-green-100 text-green-800 px-2 py-1 rounded-full hover:bg-green-200 transition">Press6</a>
+                                <a href="https://mp.weixin.qq.com/s/lbeKEaxXNoRDjwb8Zl4flw" target="_blank" class="text-xs bg-green-100 text-green-800 px-2 py-1 rounded-full hover:bg-green-200 transition">Press7</a>
+                            </div>
+                        </div>
+                        <div>
+                            <p class="text-gray-700 mb-3"><u>Z Yuan*#</u>. "MENDER: Fast and scalable tissue structure identification in spatial omics data". <span class="italic font-bold">Nature Communications</span> 15, 207 (2024).</p>
+                            <div class="flex flex-wrap gap-2">
+                                <a href="https://www.nature.com/articles/s41467-023-44367-9" target="_blank" class="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded-full hover:bg-blue-200 transition">Paper</a>
+                                <a href="https://github.com/yuanzhiyuan/MENDER" target="_blank" class="text-xs bg-gray-100 text-gray-800 px-2 py-1 rounded-full hover:bg-gray-200 transition">Software</a>
+                                <a href="https://mp.weixin.qq.com/s/txD_21LjF8yHDofGcabrXg" target="_blank" class="text-xs bg-green-100 text-green-800 px-2 py-1 rounded-full hover:bg-green-200 transition">Press1</a>
+                                <a href="https://mp.weixin.qq.com/s/eBdnDigR-1Z72mdeQsmjRg" target="_blank" class="text-xs bg-green-100 text-green-800 px-2 py-1 rounded-full hover:bg-green-200 transition">Press2</a>
+                                <a href="https://mp.weixin.qq.com/s/MhmO1a4J8QOcwrU-2eA5eQ" target="_blank" class="text-xs bg-green-100 text-green-800 px-2 py-1 rounded-full hover:bg-green-200 transition">Press3</a>
+                                <a href="https://mp.weixin.qq.com/s/e_yuNlHAESuEo1tRvcSewg" target="_blank" class="text-xs bg-green-100 text-green-800 px-2 py-1 rounded-full hover:bg-green-200 transition">Press4</a>
+                                <a href="https://www.nature.com/subjects/biological-sciences/ncomms" target="_blank" class="text-xs bg-yellow-100 text-yellow-800 px-2 py-1 rounded-full hover:bg-yellow-200 transition">Featured article</a>
+                            </div>
+                        </div>
+                        <div>
+                            <p class="text-gray-700 mb-3">R Shen , M Cheng, W Wang, Q Fan, H Yan, J Wen, <u>Z Yuan</u>, J Yao#, Y Li#, J Yuan#. "Graph domain adaptation–based framework for gene expression enhancement and cell type identification in large-scale spatially resolved transcriptomics". <span class="italic font-bold">Briefings in Bioinformatics</span> 25(6) (2024).</p>
+                            <div class="flex flex-wrap gap-2">
+                                <a href="https://academic.oup.com/bib/article/25/6/bbae576/7882895" target="_blank" class="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded-full hover:bg-blue-200 transition">Paper</a>
+                                <a href="https://github.com/shenrb/SpaGDA" target="_blank" class="text-xs bg-gray-100 text-gray-800 px-2 py-1 rounded-full hover:bg-gray-200 transition">Software</a>
+                            </div>
+                        </div>
+                        <div>
+                            <p class="text-gray-700 mb-3"><u>D Zhang*, N Yu*, Z Yuan*</u>, W Li, X Sun, Q Zou, X Li, Z Liu, W Zhang#, R Gao#. "stMMR: accurate and robust spatial domain identification from spatially resolved transcriptomics with multimodal feature representation". <span class="italic font-bold">GigaScience</span> 13, giae089 (2024).</p>
+                            <div class="flex flex-wrap gap-2">
+                                <a href="https://academic.oup.com/gigascience/article/doi/10.1093/gigascience/giae089/7912109" target="_blank" class="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded-full hover:bg-blue-200 transition">Paper</a>
+                                <a href="https://github.com/nayu0419/stMMR" target="_blank" class="text-xs bg-gray-100 text-gray-800 px-2 py-1 rounded-full hover:bg-gray-200 transition">Software</a>
+                            </div>
+                        </div>
+                        <div>
+                            <p class="text-gray-700 mb-3">L Cao*, Z Wang*, <u>Z Yuan#</u>, Q Luo#. "mFusion: a multiscale fusion method bridging neuroimages to genes through neurotransmissions in mental health disorders". <span class="italic font-bold">Commun Biol</span> 7, 1699 (2024)</p>
+                            <div class="flex flex-wrap gap-2">
+                                <a href="https://www.nature.com/articles/s42003-024-07404-x" target="_blank" class="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded-full hover:bg-blue-200 transition">Paper</a>
+                                <a href="https://github.com/CaoLuolong/XomicsEnrich" target="_blank" class="text-xs bg-gray-100 text-gray-800 px-2 py-1 rounded-full hover:bg-gray-200 transition">Software</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 2023 Publications -->
+                    <div data-content="2023" class="publication-content-item space-y-8 hidden">
+                        <div>
+                            <p class="text-gray-700 mb-3">T Guo*, <u>Z Yuan*</u>, Y Pan, J Wang, F Chen, MQ Zhang#, X Li#. "SPIRAL: integrating and aligning spatially resolved transcriptomics data across different experiments, conditions, and technologies". <span class="italic font-bold">Genome Biology</span> 24, 241 (2023).</p>
+                            <div class="flex flex-wrap gap-2">
+                                <a href="https://genomebiology.biomedcentral.com/articles/10.1186/s13059-023-03078-6" target="_blank" class="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded-full hover:bg-blue-200 transition">Paper</a>
+                                <a href="https://github.com/guott15/SPIRAL" target="_blank" class="text-xs bg-gray-100 text-gray-800 px-2 py-1 rounded-full hover:bg-gray-200 transition">Software</a>
+                                <a href="https://mp.weixin.qq.com/s/uzBG8RAzQaj7Lfimufj_Xg" target="_blank" class="text-xs bg-green-100 text-green-800 px-2 py-1 rounded-full hover:bg-green-200 transition">Press1</a>
+                                <a href="https://mp.weixin.qq.com/s/MZcCPu_A4J1Wpx_U5Rcp5w" target="_blank" class="text-xs bg-green-100 text-green-800 px-2 py-1 rounded-full hover:bg-green-200 transition">Press2</a>
+                                <a href="https://mp.weixin.qq.com/s/QESIgUAWZHt0_ZpZbky7aA" target="_blank" class="text-xs bg-green-100 text-green-800 px-2 py-1 rounded-full hover:bg-green-200 transition">Press3</a>
+                            </div>
+                        </div>
+                        <div>
+                            <p class="text-gray-700 mb-3"><u>Z Yuan*#</u>, J Yao#. "Harnessing Computational Spatial Omics to Explore the Spatial Biology Intricacies". <span class="italic font-bold">Seminars in Cancer Biology</span> (2023).</p>
+                             <div class="flex flex-wrap gap-2">
+                                <a href="https://doi.org/10.1016/j.semcancer.2023.06.006" target="_blank" class="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded-full hover:bg-blue-200 transition">Paper</a>
+                            </div>
+                        </div>
+                        <div>
+                            <p class="text-gray-700 mb-3"><u>Z Yuan*# </u>& MQ Zhang#. "Spatial Omics DataBase (SODB): increasing accessibility to spatial omics data". <span class="italic font-bold">Nature Methods (Research Briefing)</span> 20, 359–360 (2023).</p>
+                             <div class="flex flex-wrap gap-2">
+                                <a href="https://www.nature.com/articles/s41592-023-01772-8" target="_blank" class="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded-full hover:bg-blue-200 transition">Paper</a>
+                            </div>
+                        </div>
+                        <div>
+                            <p class="text-gray-700 mb-3"><u>Z Yuan*#</u>, W Pan*, X Zhao, <u>F Zhao</u>, Z Xu, X Li, Y Zhao, MQ Zhang# & J Yao#. "SODB facilitates comprehensive exploration of spatial omics data". <span class="italic font-bold">Nature Methods</span> 20, 387–399 (2023).</p>
+                            <div class="flex flex-wrap gap-2">
+                                <a href="https://www.nature.com/articles/s41592-023-01773-7" target="_blank" class="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded-full hover:bg-blue-200 transition">Paper</a>
+                                <a href="https://github.com/yuanzhiyuan/SODB_analysis/" target="_blank" class="text-xs bg-gray-100 text-gray-800 px-2 py-1 rounded-full hover:bg-gray-200 transition">Software</a>
+                                <a href="https://gene.ai.tencent.com/SpatialOmics/" target="_blank" class="text-xs bg-purple-100 text-purple-800 px-2 py-1 rounded-full hover:bg-purple-200 transition">Database</a>
+                                <a href="https://www.nature.com/articles/s41592-023-01772-8" target="_blank" class="text-xs bg-green-100 text-green-800 px-2 py-1 rounded-full hover:bg-green-200 transition">Press1</a>
+                                <a href="https://www.mittrchina.com/news/detail/11752" target="_blank" class="text-xs bg-green-100 text-green-800 px-2 py-1 rounded-full hover:bg-green-200 transition">Press2</a>
+                                <a href="https://news.fudan.edu.cn/2023/0221/c2463a133933/page.htm" target="_blank" class="text-xs bg-green-100 text-green-800 px-2 py-1 rounded-full hover:bg-green-200 transition">Press3</a>
+                                <a href="https://news.fudan.edu.cn/2023/0318/c2542a134174/page.htm" target="_blank" class="text-xs bg-green-100 text-green-800 px-2 py-1 rounded-full hover:bg-green-200 transition">Press4</a>
+                                <a href="https://mp.weixin.qq.com/s/I-wfVDF6a5Knn4tUg-c9rg" target="_blank" class="text-xs bg-green-100 text-green-800 px-2 py-1 rounded-full hover:bg-green-200 transition">Press5</a>
+                                <a href="https://mp.weixin.qq.com/s/tOulSzEu78cBQ2yTUSFp2A" target="_blank" class="text-xs bg-green-100 text-green-800 px-2 py-1 rounded-full hover:bg-green-200 transition">Press6</a>
+                                <a href="https://mp.weixin.qq.com/s/QFGW-413KSCfW3q2B6Claw" target="_blank" class="text-xs bg-green-100 text-green-800 px-2 py-1 rounded-full hover:bg-green-200 transition">Press7</a>
+                                <a href="https://mp.weixin.qq.com/s/E3Pv3PxFmkia0wvQ9WfRUg" target="_blank" class="text-xs bg-green-100 text-green-800 px-2 py-1 rounded-full hover:bg-green-200 transition">Press8</a>
+                                <a href="https://mp.weixin.qq.com/s/P-_2bju6KUAWFKqs04eO-A" target="_blank" class="text-xs bg-green-100 text-green-800 px-2 py-1 rounded-full hover:bg-green-200 transition">Press9</a>
+                                <a href="https://mp.weixin.qq.com/s/N7SILyTBG8tV0jEw0FjQkw" target="_blank" class="text-xs bg-green-100 text-green-800 px-2 py-1 rounded-full hover:bg-green-200 transition">Press10</a>
+                                <a href="https://gpb.big.ac.cn/news/1020" target="_blank" class="text-xs bg-red-100 text-red-800 px-2 py-1 rounded-full hover:bg-red-200 transition">Honor1</a>
+                                <a href="https://www.nature.com/nmeth/volumes/20/issues/3" target="_blank" class="text-xs bg-yellow-100 text-yellow-800 px-2 py-1 rounded-full hover:bg-yellow-200 transition">Featured article</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 2022 Publications -->
+                    <div data-content="2022" class="publication-content-item space-y-8 hidden">
+                        <div>
+                            <p class="text-gray-700 mb-3">R Shen*, L Liu*, Z Wu*, Y Zhang*, <u>Z Yuan</u>, J Guo, F Yang, C Zhang, B Chen, W Feng, C Liu, J Guo, G Fan, Y Zhang, Y Li#, X Xu#, J Yao#. "Spatial-ID: a cell typing method for spatially resolved transcriptomics via transfer learning and spatial embedding". <span class="italic font-bold">Nature communications</span> 13 (1), 7640 (2022).</p>
+                            <div class="flex flex-wrap gap-2">
+                                <a href="https://www.nature.com/articles/s41467-022-35288-0" target="_blank" class="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded-full hover:bg-blue-200 transition">Paper</a>
+                                <a href="https://github.com/TencentAILabHealthcare/spatialID" target="_blank" class="text-xs bg-gray-100 text-gray-800 px-2 py-1 rounded-full hover:bg-gray-200 transition">Software</a>
+                                <a href="https://mp.weixin.qq.com/s/3qJLH0gK-tAx2fHNpC0b1Q" target="_blank" class="text-xs bg-green-100 text-green-800 px-2 py-1 rounded-full hover:bg-green-200 transition">Press1</a>
+                                <a href="https://mp.weixin.qq.com/s/RmYg671HX0hAUjvNfLPy2w" target="_blank" class="text-xs bg-green-100 text-green-800 px-2 py-1 rounded-full hover:bg-green-200 transition">Press2</a>
+                            </div>
+                        </div>
+                        <div>
+                            <p class="text-gray-700 mb-3"><u>Z Yuan*#</u>, Y Li*, M Shi, F Yang, J Gao, J Yao# & MQ Zhang#. "SOTIP is a versatile method for microenvironment modeling with spatial omics data". <span class="italic font-bold">Nature Communications</span> 13, 7330 (2022).</p>
+                            <div class="flex flex-wrap gap-2">
+                                <a href="https://www.nature.com/articles/s41467-022-34867-5" target="_blank" class="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded-full hover:bg-blue-200 transition">Paper</a>
+                                <a href="https://github.com/TencentAILabHealthcare/SOTIP" target="_blank" class="text-xs bg-gray-100 text-gray-800 px-2 py-1 rounded-full hover:bg-gray-200 transition">Software</a>
+                                <a href="https://mp.weixin.qq.com/s/ZCF4V3LI62Ifzdkl5mSMvg" target="_blank" class="text-xs bg-green-100 text-green-800 px-2 py-1 rounded-full hover:bg-green-200 transition">Press1</a>
+                                <a href="https://mp.weixin.qq.com/s/jxwrPi031WppE2KeyqP45w" target="_blank" class="text-xs bg-green-100 text-green-800 px-2 py-1 rounded-full hover:bg-green-200 transition">Press2</a>
+                                <a href="https://mp.weixin.qq.com/s/wbft8_qAI7M2SzE9sb4Egw" target="_blank" class="text-xs bg-green-100 text-green-800 px-2 py-1 rounded-full hover:bg-green-200 transition">Press3</a>
+                                <a href="https://mp.weixin.qq.com/s/-DXL6a0_l0c62J1J0yU9eg" target="_blank" class="text-xs bg-green-100 text-green-800 px-2 py-1 rounded-full hover:bg-green-200 transition">Press4</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Before FuDan Publications -->
+                    <div data-content="before" class="publication-content-item space-y-8 hidden">
+                        <div>
+                            <p class="text-gray-700 mb-3">Z Wang, Y Zhong, Z Ye, L Zeng, Y Chen, M Shi, <u>Z Yuan</u>, Q Zhou, M Qian & MQ Zhang. "MarkovHC: Markov hierarchical clustering for the topological structure of high-dimensional single-cell omics data with transition pathway and critical point detection". <span class="italic font-bold">Nucleic Acids Research</span> 50 (1), 46-56 (2022).</p>
+                            <div class="flex flex-wrap gap-2">
+                                <a href="https://academic.oup.com/nar/article/50/1/46/6447264" target="_blank" class="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded-full hover:bg-blue-200 transition">Paper</a>
+                                <a href="https://github.com/ZhenyiWangTHU/MarkovHC" target="_blank" class="text-xs bg-gray-100 text-gray-800 px-2 py-1 rounded-full hover:bg-gray-200 transition">Software</a>
+                            </div>
+                        </div>
+                        <div>
+                            <p class="text-gray-700 mb-3"><u>Z Yuan*</u>, Q Zhou*, L Cai*, L Pan, W Sun, S Qumu, S Yu, J Feng, H Zhao, Y Zheng, M Shi, S Li, Y Chen#, X Zhang# & MQ Zhang#. "SEAM is a spatial single nuclear metabolomics method for dissecting tissue microenvironment". <span class="italic font-bold">Nature Methods</span> 18, 1223–1232 (2021).</p>
+                            <div class="flex flex-wrap gap-2">
+                                <a href="https://www.nature.com/articles/s41592-021-01276-3" target="_blank" class="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded-full hover:bg-blue-200 transition">Paper</a>
+                                <a href="https://github.com/yuanzhiyuan/SEAM" target="_blank" class="text-xs bg-gray-100 text-gray-800 px-2 py-1 rounded-full hover:bg-gray-200 transition">Software</a>
+                                <a href="https://www.nature.com/articles/s41592-021-01287-0" target="_blank" class="text-xs bg-green-100 text-green-800 px-2 py-1 rounded-full hover:bg-green-200 transition">Press1</a>
+                                <a href="https://mp.weixin.qq.com/s/Ky-0lmKfkZxElMivzmd4fQ" target="_blank" class="text-xs bg-green-100 text-green-800 px-2 py-1 rounded-full hover:bg-green-200 transition">Press2</a>
+                                <a href="https://www.stemcellsciencenews.com/uncategorized/167469/" target="_blank" class="text-xs bg-green-100 text-green-800 px-2 py-1 rounded-full hover:bg-green-200 transition">Press3</a>
+                                <a href="https://mp.weixin.qq.com/s/aGrJf9ZcMaf0NCrWRmWd0A" target="_blank" class="text-xs bg-green-100 text-green-800 px-2 py-1 rounded-full hover:bg-green-200 transition">Press4</a>
+                                <a href="https://mp.weixin.qq.com/s/DSVH3pRbkM5KWdiV4o5l_w" target="_blank" class="text-xs bg-green-100 text-green-800 px-2 py-1 rounded-full hover:bg-green-200 transition">Press5</a>
+                                <a href="https://mp.weixin.qq.com/s/k1q0AdPDlD5eekNQgPKB_g" target="_blank" class="text-xs bg-green-100 text-green-800 px-2 py-1 rounded-full hover:bg-green-200 transition">Press6</a>
+                                <a href="https://mp.weixin.qq.com/s/LIYlwnd1SmfjBvq5nfIJ_g" target="_blank" class="text-xs bg-green-100 text-green-800 px-2 py-1 rounded-full hover:bg-green-200 transition">Press7</a>
+                                <a href="https://gpb.big.ac.cn/news/1016" target="_blank" class="text-xs bg-red-100 text-red-800 px-2 py-1 rounded-full hover:bg-red-200 transition">Honor1</a>
+                                <a href="https://www.sdxz2050.com/32165.html" target="_blank" class="text-xs bg-red-100 text-red-800 px-2 py-1 rounded-full hover:bg-red-200 transition">Honor2</a>
+                                <a href="https://www.nature.com/nmeth/volumes/18/issues/10" target="_blank" class="text-xs bg-yellow-100 text-yellow-800 px-2 py-1 rounded-full hover:bg-yellow-200 transition">Featured article</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="mt-8 text-sm text-gray-500">
+                    <p>*: These authors contributed equally to this study and share the first authorship.</p>
+                    <p>#: Co-corresponding author</p>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- TALKS Section -->
+        <section id="talks" class="mb-24">
+            <h2 class="text-3xl font-bold text-center text-gray-900 mb-12">TALKS</h2>
+            <div class="bg-white p-8 rounded-lg shadow-md max-w-5xl mx-auto">
+                <!-- Invited Talks Section -->
+                <div>
+                    <h3 class="text-2xl font-semibold text-gray-800 mb-6 border-b-2 border-blue-200 pb-2">Invited Talks</h3>
+                    <ul class="space-y-4 text-gray-600">
+                        <li class="flex flex-col sm:flex-row"><p class="font-semibold w-full sm:w-48 shrink-0">2025.07.22&nbsp; &nbsp;长沙</p><p>中国解剖学会组织学与胚胎学分会2025年学术年会 “人工智能赋能的空间多组学” 分会场邀请报告</p></li>
+                        <li class="flex flex-col sm:flex-row"><p class="font-semibold w-full sm:w-48 shrink-0">2025.07.19&nbsp; &nbsp;东莞</p><p>第三届松山湖数学论坛 “人工智能赋能的单细胞时空分析” 分会场邀请报告</p></li>
+                        <li class="flex flex-col sm:flex-row"><p class="font-semibold w-full sm:w-48 shrink-0">2025.06.26&nbsp; &nbsp;北京</p><p>生命科学前沿技术发展战略对策研讨会 “空间多组学数据整合” 分会场邀请报告</p></li>
+                        <li class="flex flex-col sm:flex-row"><p class="font-semibold w-full sm:w-48 shrink-0">2025.06.25&nbsp; &nbsp;上海</p><p>上海交通大学转化医学研究院 “空间多组学数据整合” 邀请报告</p></li>
+                        <li class="flex flex-col sm:flex-row"><p class="font-semibold w-full sm:w-48 shrink-0">2025.05.23&nbsp; &nbsp;济南</p><p>第十一届全国计算生物学与生物信息学学术会议 “空间多组学数据整合” 分会场邀请报告</p></li>
+                        <li class="flex flex-col sm:flex-row"><p class="font-semibold w-full sm:w-48 shrink-0">2025.05.10&nbsp; &nbsp;北京</p><p>第12届“数学、计算机与生命科学交叉研究”青年学者论坛 “计算空间组学” 主会场邀请报告</p></li>
+                        <li class="flex flex-col sm:flex-row"><p class="font-semibold w-full sm:w-48 shrink-0">2025.04.25&nbsp; &nbsp;上海</p><p>第三届 CCF 生物信息学“新未来”青年学者研讨会 “计算空间组学” 邀请报告</p></li>
+                        <li class="flex flex-col sm:flex-row"><p class="font-semibold w-full sm:w-48 shrink-0">2025.04.12&nbsp; &nbsp;武汉</p><p>武汉大学人工智能学院 “计算空间组学” 邀请报告</p></li>
+                        <li class="flex flex-col sm:flex-row"><p class="font-semibold w-full sm:w-48 shrink-0">2025.03.29&nbsp; &nbsp;深圳</p><p>第二届全国基因组信息学大会 “计算空间组学” 分会场邀请报告</p></li>
+                        <li class="flex flex-col sm:flex-row"><p class="font-semibold w-full sm:w-48 shrink-0">2025.01.20&nbsp; &nbsp;上海</p><p>上海交通大学溥渊未来技术学院 “空间组生物信息学” 邀请报告</p></li>
+                        <li class="flex flex-col sm:flex-row"><p class="font-semibold w-full sm:w-48 shrink-0">2025.01.17&nbsp; &nbsp;上海</p><p>“思享前沿”学术研讨会暨2024年上海市计算机学会生物信息学专委会年会 “空间组生物信息学” 邀请报告</p></li>
+                        <li class="flex flex-col sm:flex-row"><p class="font-semibold w-full sm:w-48 shrink-0">2024.12.15&nbsp; &nbsp;上海</p><p>The 2nd Med-X International Conference “AI-aided spatial omics experimental design” 分会场邀请报告</p></li>
+                        <li class="flex flex-col sm:flex-row"><p class="font-semibold w-full sm:w-48 shrink-0">2024.12.06&nbsp; &nbsp;广州</p><p>第六届全国生物医学数据挖掘与计算学术会议 “空间组学数据的智能分析与挖掘” 分会场邀请报告</p></li>
+                        <li class="flex flex-col sm:flex-row"><p class="font-semibold w-full sm:w-48 shrink-0">2024.11.29&nbsp; &nbsp;沈阳</p><p>第二届CCF数字医学大会 “AI辅助空间组学实验设计” 分会场邀请报告</p></li>
+                        <li class="flex flex-col sm:flex-row"><p class="font-semibold w-full sm:w-48 shrink-0">2024.11.27&nbsp; &nbsp;北京</p><p>第三届中国医学基础学科发展大会 “AI辅助空间组学实验设计” 分会场邀请报告</p></li>
+                        <li class="flex flex-col sm:flex-row"><p class="font-semibold w-full sm:w-48 shrink-0">2024.11.23&nbsp; &nbsp;杭州</p><p>第二届人工智能与生物信息学前沿交叉青年论坛 “空间组生物信息学” 邀请报告</p></li>
+                        <li class="flex flex-col sm:flex-row"><p class="font-semibold w-full sm:w-48 shrink-0">2024.10.26&nbsp; &nbsp;上海</p><p>第二十届上海大肠癌论坛 "空间组学解析组织微环境" 大会报告</p></li>
+                        <li class="flex flex-col sm:flex-row"><p class="font-semibold w-full sm:w-48 shrink-0">2024.10.12&nbsp; &nbsp;海口</p><p>第十三届全国生物信息学与系统生物学学术大会 "AI辅助空间组学实验设计" 大会报告</p></li>
+                        <li class="flex flex-col sm:flex-row"><p class="font-semibold w-full sm:w-48 shrink-0">2024.09.14&nbsp; &nbsp;济南</p><p>山东大学 "空间组学生物信息" 邀请报告</p></li>
+                        <li class="flex flex-col sm:flex-row"><p class="font-semibold w-full sm:w-48 shrink-0">2024.08.09&nbsp; &nbsp;长春</p><p>第九届中国计算机学会生物信息学会议 "空间组学生物信息" 分会场邀请报告</p></li>
+                        <li class="flex flex-col sm:flex-row"><p class="font-semibold w-full sm:w-48 shrink-0">2024.06.06&nbsp; &nbsp;上海</p><p>同济大学 "空间组生物信息学解析组织微环境" 邀请报告</p></li>
+                        <li class="flex flex-col sm:flex-row"><p class="font-semibold w-full sm:w-48 shrink-0">2024.05.24&nbsp; &nbsp;青岛</p><p>第二届山东省生物信息学学术大会暨中国生物信息学学会（筹）生物信息学算法研究专委会学术大会 "空间组生物信息学解析组织微环境" 分会场邀请报告</p></li>
+                        <li class="flex flex-col sm:flex-row"><p class="font-semibold w-full sm:w-48 shrink-0">2024.04.18&nbsp; &nbsp;福州</p><p>第三届中国智能健康与生物信息大会 "空间组生物信息学解析组织微环境" 分会场邀请报告</p></li>
+                        <li class="flex flex-col sm:flex-row"><p class="font-semibold w-full sm:w-48 shrink-0">2024.01.19&nbsp; &nbsp;上海</p><p>复旦大学影像和空间组学论坛 "空间生物信息学" 邀请报告</p></li>
+                        <li class="flex flex-col sm:flex-row"><p class="font-semibold w-full sm:w-48 shrink-0">2023.11.14&nbsp; &nbsp;上海</p><p>复旦大学 "Modeling spatial and temporal omics data" 邀请报告</p></li>
+                        <li class="flex flex-col sm:flex-row"><p class="font-semibold w-full sm:w-48 shrink-0">2023.11.08&nbsp; &nbsp;上海</p><p>计算神经科学与类脑智能教育部重点实验室2023年度学术委员会 "空间生物信息学" 邀请报告</p></li>
+                        <li class="flex flex-col sm:flex-row"><p class="font-semibold w-full sm:w-48 shrink-0">2023.11.06&nbsp; &nbsp;北京</p><p>北京大学 "Exploring Tissue Architectures with Computational Spatial Omics" 邀请报告</p></li>
+                        <li class="flex flex-col sm:flex-row"><p class="font-semibold w-full sm:w-48 shrink-0">2023.11.05&nbsp; &nbsp;北京</p><p>中国生物工程学会第十五届学术年会暨2023年全国生物技术大会 "空间生物信息学" 分会场邀请报告</p></li>
+                        <li class="flex flex-col sm:flex-row"><p class="font-semibold w-full sm:w-48 shrink-0">2023.11.03&nbsp; &nbsp;上海</p><p>第四届国际人类表型组研讨会 "Dissecting Tissue Microenvironment with Spatial Bioinformatics" 分会场邀请报告</p></li>
+                        <li class="flex flex-col sm:flex-row"><p class="font-semibold w-full sm:w-48 shrink-0">2023.10.20&nbsp; &nbsp;无锡</p><p>第三届数学生命科学大会 "空间生物信息学解析组织微环境" 分会场邀请报告</p></li>
+                        <li class="flex flex-col sm:flex-row"><p class="font-semibold w-full sm:w-48 shrink-0">2023.08.26&nbsp; &nbsp;三亚</p><p>崖州湾国家实验室 "Exploring Tissue Architectures with Computational Spatial Omics" 邀请报告</p></li>
+                        <li class="flex flex-col sm:flex-row"><p class="font-semibold w-full sm:w-48 shrink-0">2023.08.16&nbsp; &nbsp;上海</p><p>中国科学院营养与健康研究所 "用计算空间组学探索组织结构" 邀请报告</p></li>
+                        <li class="flex flex-col sm:flex-row"><p class="font-semibold w-full sm:w-48 shrink-0">2023.06.09&nbsp; &nbsp;杭州</p><p>之江实验室 "Exploring Tissue Architectures with Computational Spatial Omics" 邀请报告</p></li>
+                        <li class="flex flex-col sm:flex-row"><p class="font-semibold w-full sm:w-48 shrink-0">2023.05.26&nbsp; &nbsp;杭州</p><p>浙江工业大学信息学院 "Exploring Tissue Architectures with Computational Spatial Omics" 邀请报告</p></li>
+                        <li class="flex flex-col sm:flex-row"><p class="font-semibold w-full sm:w-48 shrink-0">2023.05.20&nbsp; &nbsp;上海</p><p>复旦大学庆学术报告“Exploring Tissue Architectures with Computational Spatial Omics”邀请报告</p></li>
+                        <li class="flex flex-col sm:flex-row"><p class="font-semibold w-full sm:w-48 shrink-0">2023.04.20&nbsp; &nbsp;上海</p><p>复旦大学影像和空间组学论坛 "空间组学探索组织微环境" 邀请报告</p></li>
+                        <li class="flex flex-col sm:flex-row"><p class="font-semibold w-full sm:w-48 shrink-0">2023.04.15&nbsp; &nbsp;线上</p><p>"基因组与AI"一作面对面论坛 "SODB facilitates comprehensive exploration of spatial omics data" 邀请报告</p></li>
+                        <li class="flex flex-col sm:flex-row"><p class="font-semibold w-full sm:w-48 shrink-0">2023.04.12&nbsp; &nbsp;上海</p><p>复旦大学生命科学学院 "空间组学数据中微环境的建模与分析方法" 邀请报告</p></li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- JOIN US Section -->
+        <section id="contact">
+            <h2 class="text-3xl font-bold text-center text-gray-900 mb-12">JOIN US</h2>
+            <div class="bg-white p-8 rounded-lg shadow-lg max-w-5xl mx-auto space-y-12">
+
+                <!-- 直博生 -->
+                <div class="space-y-6">
+                    <h3 class="text-2xl font-bold text-blue-700 border-b pb-2">直博生</h3>
+                    <p class="text-gray-600">我们每年在保研夏令营中招生，在夏令营官方考察之前，需在课题组提前实习（夏令营当年3月31日之前【投递简历】，之后【课题组内面试】、【进组考察】）。要点：</p>
+                    <div class="pl-4 space-y-4">
+                        <div>
+                            <h4 class="text-xl font-semibold text-gray-800 mb-2">【投递简历】</h4>
+                            <p class="text-gray-600 ml-4">建议您是信息学或数学相关背景，或是有较强深度学习基础的生物背景学生。请在简历中突出真实科研经历。</p>
+                        </div>
+                        <div>
+                            <h4 class="text-xl font-semibold text-gray-800 mb-2">【课题组内面试】</h4>
+                            <p class="text-gray-600 ml-4">通过简历筛选后，需面向课题组内成员讲解您的本科学习、科研、竞赛经历，及未来科研规划。面试过程中您也可以向组内成员提出问题，达到双向了解和选择目的。</p>
+                        </div>
+                        <div>
+                            <h4 class="text-xl font-semibold text-gray-800 mb-2">【进组考察】</h4>
+                            <p class="text-gray-600 ml-4">面试通过后，课题组长会布置1个测试题目，要求您在课题组内线下/线上实习期间内（约3-5周）完成。</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 普博生 -->
+                <div class="space-y-6">
+                    <h3 class="text-2xl font-bold text-blue-700 border-b pb-2">普博生</h3>
+                    <p class="text-gray-600">课题组也招收申请考核制博士生（名额取决于夏令营招生情况），在官方申请考核之前，需在课题组提前实习（拿到硕士学位前一年6月30日之前【投递简历,需包含硕士导师的推荐信一封】，之后【课题组内面试】、【进组考察】）。要点：</p>
+                    <div class="pl-4 space-y-4">
+                        <div>
+                            <h4 class="text-xl font-semibold text-gray-800 mb-2">【投递简历】</h4>
+                            <p class="text-gray-600 ml-4">建议您是信息学或数学相关背景，或是有较强深度学习基础的生物背景学生。请在简历中突出真实科研经历及论文列表。且需要硕士导师的推荐信一封。</p>
+                        </div>
+                        <div>
+                            <h4 class="text-xl font-semibold text-gray-800 mb-2">【课题组内面试】</h4>
+                            <p class="text-gray-600 ml-4">通过简历筛选后，需面向课题组内成员讲解您的学习、科研经历，及未来科研规划。面试过程中您也可以向组内成员提出问题，达到双向了解和选择目的。</p>
+                        </div>
+                        <div>
+                            <h4 class="text-xl font-semibold text-gray-800 mb-2">【进组考察】</h4>
+                            <p class="text-gray-600 ml-4">面试通过后，课题组长会布置1个测试题目，要求您在课题组内线下/线上实习期间内（约3-5周）完成。</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 博士后 -->
+                <div class="space-y-6">
+                    <h3 class="text-2xl font-bold text-blue-700 border-b pb-2">博士后</h3>
+                    <p class="text-gray-600">
+                        <a href="https://mp.weixin.qq.com/s/swbl6znv17yTLNuG0kg_zA" target="_blank" class="text-blue-600 hover:underline break-all">https://mp.weixin.qq.com/s/swbl6znv17yTLNuG0kg_zA</a>
+                    </p>
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white">
+        <div class="container mx-auto px-6 py-4 text-center">
+            <p>&copy; 2025 YuanST Lab. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // --- Mobile Menu Toggle ---
+            const menuBtn = document.getElementById('menu-btn');
+            const mobileMenu = document.getElementById('mobile-menu');
+            
+            menuBtn.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+            });
+
+            // Close mobile menu when a link inside it is clicked
+            document.querySelectorAll('#mobile-menu a').forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileMenu.classList.add('hidden');
+                });
+            });
+
+            // --- Single Page Application (SPA) Navigation Logic ---
+            const sections = document.querySelectorAll('main > section');
+            const navLinks = document.querySelectorAll('header nav a');
+
+            const updateActiveLink = (targetId) => {
+                navLinks.forEach(link => {
+                    link.classList.remove('nav-link-active');
+                    // Check if the link's href matches the target section's ID
+                    if (link.getAttribute('href') === `#${targetId}`) {
+                        link.classList.add('nav-link-active');
+                    }
+                });
+            };
+
+            const showPage = (pageId) => {
+                // Default to 'home' if pageId is empty or invalid
+                const targetId = pageId || 'home';
+                let pageFound = false;
+
+                // Loop through all sections to hide or show them
+                sections.forEach(section => {
+                    if (section.id === targetId) {
+                        section.classList.remove('hidden');
+                        pageFound = true;
+                    } else {
+                        section.classList.add('hidden');
+                    }
+                });
+
+                // If the requested page ID doesn't exist, show the home page as a fallback
+                if (!pageFound) {
+                    document.getElementById('home').classList.remove('hidden');
+                    updateActiveLink('home');
+                } else {
+                    updateActiveLink(targetId);
+                }
+
+                // Scroll to the top of the page on navigation
+                window.scrollTo(0, 0);
+            };
+
+            // --- Event Listeners for Navigation ---
+
+            // When a nav link is clicked, update the URL hash
+            document.querySelectorAll('header a[href^="#"]').forEach(link => {
+                link.addEventListener('click', (event) => {
+                    const href = link.getAttribute('href');
+                    if (href.startsWith('#')) {
+                        event.preventDefault(); // Prevent default anchor jump
+                        window.location.hash = href; // This will trigger the 'hashchange' event
+                    }
+                });
+            });
+
+            // Listen for hash changes (e.g., from link clicks or back/forward buttons)
+            window.addEventListener('hashchange', () => {
+                const pageId = window.location.hash.substring(1);
+                showPage(pageId);
+            });
+
+            // Initial page load: Show the correct page based on the URL hash
+            const initialPageId = window.location.hash.substring(1);
+            showPage(initialPageId);
+            
+            // --- Publications Tab Logic ---
+            const publicationTabs = document.querySelectorAll('.publication-tab');
+            const publicationContentItems = document.querySelectorAll('.publication-content-item');
+
+            publicationTabs.forEach(tab => {
+                tab.addEventListener('click', () => {
+                    const target = tab.getAttribute('data-tab');
+
+                    // Update tab styles
+                    publicationTabs.forEach(t => t.classList.remove('publication-tab-active'));
+                    tab.classList.add('publication-tab-active');
+
+                    // Show/hide content
+                    publicationContentItems.forEach(content => {
+                        if (content.getAttribute('data-content') === target) {
+                            content.classList.remove('hidden');
+                        } else {
+                            content.classList.add('hidden');
+                        }
+                    });
+                });
+            });
+        });
+    </script>
+
+</body>
+</html>
