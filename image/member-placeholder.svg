@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="title desc">
+  <title id="title">Photo unavailable</title>
+  <desc id="desc">Placeholder portrait used when a member photo is not available in the repository.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#e2e8f0" />
+      <stop offset="100%" stop-color="#cbd5e1" />
+    </linearGradient>
+  </defs>
+  <rect width="256" height="256" rx="32" fill="url(#bg)" />
+  <circle cx="128" cy="94" r="42" fill="#94a3b8" />
+  <path d="M56 214c12-35 42-58 72-58s60 23 72 58" fill="#94a3b8" />
+  <text x="128" y="236" text-anchor="middle" font-family="Arial, sans-serif" font-size="18" fill="#475569">
+    Photo unavailable
+  </text>
+</svg>
